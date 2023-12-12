@@ -3,7 +3,7 @@ import { TodoBox } from './components/TodoBox.tsx'
 import { Filter } from './components/Filter'
 import { type FilterValue, TODO_FILTERS } from './types/todo'
 import { NewTask } from './components/NewTask.tsx'
-import { useSEO } from './hooks/useSeo.tsx'
+import { useSEO } from './hooks/useSEO.tsx'
 
 const mock = [
   {

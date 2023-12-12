@@ -1,33 +1,25 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { TodoBox } from './components/TodoBox.tsx'
 import { Filter } from './components/Filter'
-import { type FilterValue, TODO_FILTERS } from './types/todo'
+import { type FilterValue, TODO_FILTERS, ListofTodos } from './types/todo'
 import { NewTask } from './components/NewTask.tsx'
 import { useSEO } from './hooks/useSEO.tsx'
 
-const mock = [
-  {
-    id: crypto.randomUUID(),
-    name: 'Salir a comprar',
-    done: false
-  },
-  {
-    id: crypto.randomUUID(),
-    name: 'Agregar Estilos',
-    done: true
-  },
-  {
-    id: crypto.randomUUID(),
-    name: 'Conseguir Trabajo',
-    done: false
-  }
-]
 
 function App (): JSX.Element {
-  const [todos, setTodos] = useState(mock)
+  const [todos, setTodos] = useState<ListofTodos>([])
   const [filterSelected, setFilterSelected] = useState<FilterValue>(TODO_FILTERS.ALL)
 
   useSEO({ title: 'Todo List', description: 'Todo List' })
+
+  useEffect(() => {
+    async function getTodos (): Promise<void> {
+      const response = await fetch('/api/tasks')
+      const data = await response.json()
+      setTodos(data)
+    }
+    getTodos()
+  },[])
 
   const filteredTodos = useMemo(() => {
     return todos.filter(todo => {

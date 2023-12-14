@@ -16,14 +16,14 @@ module.exports = {
                 ".eslintrc.{js,cjs}"
             ],
             "parserOptions": {
-                "sourceType": "script"
+                "sourceType": "script",
+                "project": "./tsconfig.node.json"
             }
         }
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
+        "sourceType": "module"
     },
     "plugins": [
         "react"
@@ -31,6 +31,9 @@ module.exports = {
     "rules": {
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "react-hooks/exhaustive-deps": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/no-floating-promises": "off",
     }
 }

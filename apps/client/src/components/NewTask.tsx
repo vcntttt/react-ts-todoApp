@@ -24,6 +24,7 @@ export const NewTask: React.FC<Props> = ({ onAddTask }) => {
         placeholder="Enter new task"
         ref={inputRef}
         className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+        required
       />
       <button
         type="submit"

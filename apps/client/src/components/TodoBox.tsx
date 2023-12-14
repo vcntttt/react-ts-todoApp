@@ -1,24 +1,32 @@
+import { useTodos } from '../hooks/useTodos'
 import { type ListofTodos } from '../types/todo'
-import { Todo } from './Todo'
+import { TodoItem } from './Todo'
 
 interface Props {
   todos: ListofTodos
-  onRemove: (id: string) => void
-  onToggle: (id: string) => void
 }
 
-export const TodoBox: React.FC<Props> = ({ todos, onRemove, onToggle }) => {
+export const TodoBox: React.FC<Props> = ({ todos }) => {
+  const { handleRemove, handleToggle } = useTodos()
+  console.log(todos)
   return (
-    <ul className='flex flex-col gap-4'>
-      {todos.map((todo) => (
-        <Todo
-          key={todo.id}
-          id={todo.id}
-          name={todo.name}
-          done={todo.done}
-          onRemove={onRemove}
-          onToggle={onToggle}/>
-      ))}
-    </ul>
+    <>
+      {todos.length > 0
+        ? (
+        <ul className='flex flex-col gap-4'>
+          {todos.map((todo) => (
+            <TodoItem
+              onToggle={handleToggle}
+              onRemove={handleRemove}
+              key={todo.id}
+              task={todo}
+            />
+          ))}
+        </ul>
+          )
+        : (
+        <p>No hay tareas pendientes</p>
+          )}
+    </>
   )
 }

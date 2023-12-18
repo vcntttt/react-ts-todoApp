@@ -8,7 +8,6 @@ interface Props {
 
 export const TodoBox: React.FC<Props> = ({ todos }) => {
   const { handleRemove, handleToggle } = useTodos()
-  console.log(todos)
   return (
     <>
       {todos.length > 0

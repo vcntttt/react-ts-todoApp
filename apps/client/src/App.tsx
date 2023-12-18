@@ -6,7 +6,6 @@ import { useTodos } from './hooks/useTodos.tsx'
 
 function App (): JSX.Element {
   useSEO({ title: 'Todo List', description: 'Todo List' })
-
   const {
     filterSelected,
     handleFilterChange,

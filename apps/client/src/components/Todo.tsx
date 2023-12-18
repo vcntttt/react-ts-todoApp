@@ -8,7 +8,6 @@ interface Props {
 
 export const TodoItem: React.FC<Props> = ({ task, onToggle, onRemove }) => {
   const { id, name, done } = task
-
   return (
     <li className="flex p-4 bg-slate-200 text-black rounded gap-2 min-w-[300px] justify-between items-center">
       <h1 className={`text-xl ${done ? 'line-through' : ''}`}>

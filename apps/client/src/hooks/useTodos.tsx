@@ -5,6 +5,7 @@ import { addTaskRequest, deleteTaskRequest, toggleTaskRequest } from '../api'
 export const useTodos = () => {
   const [todos, setTodos] = useState<ListofTodos>([])
   const [filterSelected, setFilterSelected] = useState<FilterValue>(TODO_FILTERS.ALL)
+
   async function getTodos () {
     try {
       const response = await fetch('/api/tasks')
@@ -17,25 +18,7 @@ export const useTodos = () => {
 
   useEffect(() => {
     getTodos()
-  }, [])
-
-  const filteredTodos = useMemo(() => {
-    return todos.filter(todo => {
-      if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.done
-      if (filterSelected === TODO_FILTERS.COMPLETED) return todo.done
-      else return todo
-    })
-  }, [todos, filterSelected])
-
-  const handleRemove = async (id: IDTodo) => {
-    await deleteTaskRequest(id)
-    setTodos(todos.filter(todo => todo.id !== id))
-  }
-
-  const handleToggle = async (task: Todo) => {
-    await toggleTaskRequest({ ...task, done: !task.done })
-    setTodos(todos.map(todo => (todo.id === task.id ? { ...todo, done: !task.done } : todo)))
-  }
+  }, [todos])
 
   const handleFilterChange = (filter: FilterValue): void => {
     setFilterSelected(filter)
@@ -49,6 +32,33 @@ export const useTodos = () => {
     }
     await addTaskRequest(newTodo)
     setTodos([...todos, newTodo])
+  }
+
+  const filteredTodos = useMemo(() => {
+    return todos.filter(todo => {
+      if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.done
+      if (filterSelected === TODO_FILTERS.COMPLETED) return todo.done
+      else return todo
+    })
+  }, [todos, filterSelected])
+
+  const handleRemove = async (id: IDTodo) => {
+    try {
+      await deleteTaskRequest(id)
+      setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleToggle = async (task: Todo) => {
+    try {
+      const updatedTask = { ...task, done: !task.done }
+      await toggleTaskRequest(updatedTask)
+      setTodos(prevTodos => prevTodos.map(todo => (todo.id === task.id ? updatedTask : todo)))
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return {

@@ -1,8 +1,8 @@
-import { TodoBox } from './components/TodoBox.tsx'
-import { Filter } from './components/Filter'
-import { NewTask } from './components/NewTask.tsx'
-import { useSEO } from './hooks/useSEO.tsx'
-import { useTodos } from './hooks/useTodos.tsx'
+import { TodoBox } from '@/components/TodoBox.tsx'
+import { Filter } from '@/components/Filter'
+import { NewTask } from '@/components/NewTask.tsx'
+import { useSEO } from '@/hooks/useSEO.tsx'
+import { useTodos } from '@/hooks/useTodos.tsx'
 
 function App (): JSX.Element {
   useSEO({ title: 'Todo List', description: 'Todo List' })

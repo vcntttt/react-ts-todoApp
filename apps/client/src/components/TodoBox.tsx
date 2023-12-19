@@ -1,6 +1,6 @@
-import { useTodos } from '../hooks/useTodos'
+import { useTodos } from '@/hooks/useTodos'
 import { type ListofTodos } from '../types/todo'
-import { TodoItem } from './Todo'
+import { TodoItem } from '@/components/Todo'
 
 interface Props {
   todos: ListofTodos

@@ -1,13 +1,3 @@
-export interface Todo {
-  id: IDTodo
-  name: string
-  done: boolean
-}
-
-export type ListofTodos = Todo[]
-
-export type IDTodo = `${string}-${string}-${string}-${string}-${string}`
-
 export const TODO_FILTERS = {
   ALL: 'all',
   ACTIVE: 'active',
@@ -28,5 +18,3 @@ export const FILTERS_BTNS = {
     href: `/?filter=${TODO_FILTERS.COMPLETED}`
   }
 } as const
-
-export type FilterValue = typeof TODO_FILTERS[keyof typeof TODO_FILTERS]

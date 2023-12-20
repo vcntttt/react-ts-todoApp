@@ -1,4 +1,4 @@
-import { type IDTodo, type Todo } from '../types/todo'
+import { type IDTodo, type Todo } from '../types/todoTypes'
 
 interface Props {
   onToggle: (task: Todo) => void
@@ -15,7 +15,7 @@ export const TodoItem: React.FC<Props> = ({ task, onToggle, onRemove }) => {
       </h1>
       <div className="flex gap-4 items-center">
         <input
-          className='w-4 h-4'
+          className='size-4'
           type="checkbox"
           checked={done}
           onChange={() => {

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Input, Button } from '@/components/ui'
-import MainIcon from '@/components/icons/MainIcon.jsx'
+import { MainIcon } from '@/components/icons'
 
 interface Props {
   onAddTask: (task: string) => void
@@ -25,9 +25,10 @@ export const NewTask: React.FC<Props> = ({ onAddTask }) => {
       <Input placeholder="Enter new Task" type="text" ref={inputRef} />
       <Button
         type="submit"
+        extraStyles="flex justify-between"
       >
         Add
-      <MainIcon/>
+      <MainIcon className='w-6 h-6'/>
       </Button>
     </form>
   )

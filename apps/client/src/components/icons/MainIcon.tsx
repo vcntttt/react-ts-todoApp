@@ -1,16 +1,16 @@
-const MainIcon = ({ name }) => {
+interface Props extends React.SVGProps<SVGSVGElement> {}
+
+const MainIcon: React.FC<Props> = (props) => {
   return (
     <svg
   xmlns="http://www.w3.org/2000/svg"
-  className="icon icon-tabler icon-tabler-adjustments-horizontal"
-  width="44"
-  height="44"
   viewBox="0 0 24 24"
   strokeWidth="1.5"
   stroke="currentColor"
   fill="none"
   strokeLinecap="round"
   strokeLinejoin="round"
+  {...props}
 >
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -26,5 +26,4 @@ const MainIcon = ({ name }) => {
 
   )
 }
-
 export default MainIcon

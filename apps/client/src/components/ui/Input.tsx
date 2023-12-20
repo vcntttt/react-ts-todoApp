@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
+export const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   return (
     <input
       ref={ref}
@@ -12,5 +12,3 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
 })
 
 Input.displayName = 'Input'
-
-export default Input

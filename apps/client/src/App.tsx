@@ -7,6 +7,7 @@ import { useTodos } from '@/hooks/useTodos.tsx'
 function App (): JSX.Element {
   useSEO({ title: 'Todo List', description: 'Todo List' })
   const {
+    todos,
     filterSelected,
     handleFilterChange,
     filteredTodos,
@@ -20,10 +21,10 @@ function App (): JSX.Element {
       <TodoBox
         todos={filteredTodos}
       />
-      <Filter
+      {todos.length > 0 && <Filter
         filterSelected={filterSelected}
         onFilterChange={handleFilterChange}
-      />
+      />}
     </main>
   )
 }

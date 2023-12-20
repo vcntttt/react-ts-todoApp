@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
-import { TODO_FILTERS, type FilterValue, type ListofTodos, type Todo, type IDTodo } from '../types/todo'
-import { addTaskRequest, deleteTaskRequest, toggleTaskRequest } from '../api'
+import { TODO_FILTERS } from '@/types/consts'
+import type { FilterValue, ListofTodos, Todo, IDTodo } from '@/types/todoTypes'
+import { addTaskRequest, deleteTaskRequest, toggleTaskRequest } from '@/utils/api'
 
 export const useTodos = () => {
   const [todos, setTodos] = useState<ListofTodos>([])

@@ -1,4 +1,4 @@
-import { type IDTodo, type Todo } from './types/todo'
+import { type IDTodo, type Todo } from '../types/todoTypes'
 
 export const addTaskRequest = async (task: Todo): Promise<void> => {
   await fetch('/api/tasks/add', {
